@@ -32,16 +32,15 @@ Related class of this function:
 - `PlaneViewController` class
 - `Plane` class
 
-![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/IP6iHTKlhMsk57spyEpGX6YCX397yIIwZAltJR_atD4MFQXBnnQcuNq5Ggx-312NHRJZcLcfP00)
-
 ### Session Configuration
+
+![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/IP6iHTKlhMsk57spyEpGX6YCX397yIIwZAltJR_atD4MFQXBnnQcuNq5Ggx-312NHRJZcLcfP00)
 
 `ARSession` class is the basis of controlling an AR experience. It is the main object for coordinating the major processes that ARKit performs to provide an AR experience.
 
 First, in order to run an `ARSession` class, I provide a session configuration. In the `viewWillAppear(_ animated: Bool)` method of the `PlaneViewController` class, which is called every time the view is displayed, a session configuration is created using `ARWorldTrackingConfiguration`  class that is a sub-class of `ARConfiguration` class. `ARWorldTrackingConfiguration`  class can track the iOS device's position and orientation. 
 
-![enter image description here](https://lh3.googleusercontent.com/XqSTC25m2J6UWg-s8KARLm15Kbk7vH468H7nK7mbcE9CipL9HlI7NAfdOL1i0V6HdFd9tEE8a0E)
-*The relationship between ARSession and ARConfiguration subclass*
+![The relationship between ARSession and ARConfiguration subclass](https://lh3.googleusercontent.com/XqSTC25m2J6UWg-s8KARLm15Kbk7vH468H7nK7mbcE9CipL9HlI7NAfdOL1i0V6HdFd9tEE8a0E)
 
 Then, the `planeDetection` property, which is a type property under `ARWorldTrackingConfiguration` class, is used. This type property can find the real-world horizontal or vertical surfaces, and add them to the session as the `ARPlaneAnchor` objects. 
 
@@ -144,7 +143,7 @@ Moreover, because of the session configuration, ARKit will automatically add and
 ## Furniture Search
 In this project, I developed three search methods, which are by keyword, by measurement and by plane selection.
 
-![Search Furniture by Keyword](https://lh3.googleusercontent.com/FVoxDteJBXHkgFyp-eDTfRpa6daiAtDTnjxw53wYzEMjqZ1okLnHeuHKqsMXgF8ls82Y_jEkHuM)
+![Search Furniture by Keyword](https://lh3.googleusercontent.com/LlIfwe1qnvEJKFysuTuRKetUlYUQfU3OMekbjKZNoGHeK30q-J9nvv8kdZXYXK92THmyk4Q3RbI)
 
 ![Search Furniture by Measurement](https://lh3.googleusercontent.com/AeGlI1bjqimEJoiRSGbmNieTl-dNZKNYX0b2x6DGJpvcDkwvhtlZoXF0Uc3NK6Rd7jSJ-_Q4Img)
 
