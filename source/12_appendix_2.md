@@ -4,7 +4,8 @@
 This could include extra figures or raw data
 -->
 
-[1] Apple Developer. (n.d.). Tracking and Visualizing Planes. Retrieved March 2020, from https://developer.apple.com/documentation/arkit/world_tracking/tracking_and_visualizing_planes
+[1] Apple Developer. (n.d.). Tracking and Visualizing Planes. Retrieved March 2020, from https://developer.apple.com/documentation/arkit/  
+world_tracking/tracking_and_visualizing_planes
 
 [2] Herrera, E. (2017, September 4). Build a realtime measuring app with ARKit. Retrieved March 2020, from https://pusher.com/tutorials/realtime-measuring-arkit
 
@@ -18,6 +19,6 @@ This could include extra figures or raw data
 
 [7] Ibrahim, M. (2018, July 3). An Introduction to ARKit 2 - Object Scanning. Retrieved April 2020, from https://blog.usejournal.com/an-introduction-to-arkit-2-object-scanning-68963b9be43a
 
-[8] Assouline, A. (2016, August 9). Amazing Physically Based Rendering Using the New iOS 10 SceneKit. Retrieved April 2020, from `https://medium.com/@avihay/amazing-physically-based-rendering-using-the-new-ios-10-scenekit-2489e43f7021`
+[8] Assouline, A. (2016, August 9). Amazing Physically Based Rendering Using the New iOS 10 SceneKit. Retrieved April 2020, from https://medium.com/@avihay/amazing-physically-based-rendering-using-the-new-ios-10-scenekit-2489e43f7021
 
 
