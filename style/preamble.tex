@@ -128,4 +128,12 @@
 % \usepackage[rightFloats, CaptionBefore]{fltpage}
 
 % Don't let floats cross subsections
-% \usepackage[section,subsection]{extraplaceins}
+\usepackage[section]{placeins}
+
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother

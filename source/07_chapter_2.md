@@ -31,7 +31,7 @@ In this project, I will program in the native language, Swift. And I will use Re
 | Actor | User |
 | Brief Description | The user needs to search for a furniture object before placing the object into the camera scene. |
 | Preconditions | The user has entered the search page. |
-| Flow of Events | 1. The user enters the keyword(s) in the search bar. <br> 2. A search result will be shown. |
+| Flow of Events | 1. The user enters the keyword(s) in the search bar. <br><br> 2. A search result will be shown. |
 | Postconditions | A search result is shown. |
 | Alternative Flows and Exception | If the keyword(s) does not match any furniture object's name in the database, the system will show "No Result". |
 
