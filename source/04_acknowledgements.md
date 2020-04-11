@@ -2,9 +2,7 @@
 
 <!-- This is for acknowledging all of the people who helped out -->
 
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam congue fermentum ante, semper porta nisl consectetur ut. Duis ornare sit amet dui ac faucibus. Phasellus ullamcorper leo vitae arcu ultricies cursus. Duis tristique lacus eget metus bibendum, at dapibus ante malesuada. In dictum nulla nec porta varius. Fusce et elit eget sapien fringilla maximus in sit amet dui.
-
-Mauris eget blandit nisi, faucibus imperdiet odio. Suspendisse blandit dolor sed tellus venenatis, venenatis fringilla turpis pretium. Donec pharetra arcu vitae euismod tincidunt. Morbi ut turpis volutpat, ultrices felis non, finibus justo. Proin convallis accumsan sem ac vulputate. Sed rhoncus ipsum eu urna placerat, sed rhoncus erat facilisis. Praesent vitae vestibulum dui. Proin interdum tellus ac velit varius, sed finibus turpis placerat.
+I would like to express my great gratitude towards my supervisor, Dr. CHOY, Martin Man Ting, who had given me invaluable advice to this project. Besides, I would also like to thank Dr. HUANG, Xin, who is the observer of this project, for his constructive comments during the development of the project.
 
 <!-- Use the \newpage command to force a new page -->
 

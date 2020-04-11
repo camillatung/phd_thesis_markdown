@@ -18,7 +18,7 @@ I hereby declare that all the work done in this Final Year Project is of my inde
 \vspace*{2.5cm}
 
 $\rule{5cm}{0.15mm}$ \newline
-LEE Tai Chung, Tim
+LEE Cheuk Tung
 
 \vspace*{2.5cm}
 
@@ -38,13 +38,13 @@ Computer Science Department
 
 \vspace*{1.5cm}
 
-We hereby recommend that the Final Year Project submitted by LEE Tai Chung, Tim entitled "Management System for Personnel Agency" be accepted in partial fulfillment of the requirements for the degree of Bachelor of Science (Honours) in Computer Science.
+We hereby recommend that the Final Year Project submitted by LEE Cheuk Tung entitled "Mobile AR Application: Funiture" be accepted in partial fulfillment of the requirements for the degree of Bachelor of Science (Honours) in Computer Science.
 
 \vspace*{2.5cm}
 
 \itab{$\rule{5cm}{0.15mm}$} \tab{$\rule{5cm}{0.15mm}$}
 
-\itab{Dr. Abel B.C. Ding} \tab{Dr. Esther F.G. Hung}
+\itab{Dr. CHOY, Martin Man Ting} \tab{Dr. HUANG, Xin}
 
 \itab{Supervisor} \tab{Observer} 
 
