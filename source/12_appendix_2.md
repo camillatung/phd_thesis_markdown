@@ -19,6 +19,7 @@ world_tracking/tracking_and_visualizing_planes
 
 [7] Ibrahim, M. (2018, July 3). An Introduction to ARKit 2 - Object Scanning. Retrieved April 2020, from https://blog.usejournal.com/an-introduction-to-arkit-2-object-scanning-68963b9be43a
 
-[8] Assouline, A. (2016, August 9). Amazing Physically Based Rendering Using the New iOS 10 SceneKit. Retrieved April 2020, from https://medium.com/@avihay/amazing-physically-based-rendering-using-the-new-ios-10-scenekit-2489e43f7021
+[8] Assouline, A. (2016, August 9). Amazing Physically Based Rendering Using the New iOS 10 SceneKit. Retrieved April 2020, from `https://medium.com/@avihay/amazing-physically-based-rendering-using-
+the-new-ios-10-scenekit-2489e43f7021`
 
 

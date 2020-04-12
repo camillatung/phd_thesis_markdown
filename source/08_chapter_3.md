@@ -32,11 +32,11 @@ Related class of this function:
 - `PlaneViewController` class
 - `Plane` class
 
-![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/IP6iHTKlhMsk57spyEpGX6YCX397yIIwZAltJR_atD4MFQXBnnQcuNq5Ggx-312NHRJZcLcfP00)
-
 ### Session Configuration
 
 `ARSession` class is the basis of controlling an AR experience. It is the main object for coordinating the major processes that ARKit performs to provide an AR experience.
+
+![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/IP6iHTKlhMsk57spyEpGX6YCX397yIIwZAltJR_atD4MFQXBnnQcuNq5Ggx-312NHRJZcLcfP00)
 
 First, in order to run an `ARSession` class, I provide a session configuration. In the `viewWillAppear(_ animated: Bool)` method of the `PlaneViewController` class, which is called every time the view is displayed, a session configuration is created using `ARWorldTrackingConfiguration`  class that is a sub-class of `ARConfiguration` class. `ARWorldTrackingConfiguration`  class can track the iOS device's position and orientation. The relationship between ARSession and ARConfiguration subclass is shown in Figure 3.7. 
 
@@ -358,7 +358,8 @@ func measure(time: TimeInterval) {
                 status = "MEASURING"
 
                 let worldPosition =  
-                    SCNVector3Make(result.worldTransform.columns.3.x,   result.worldTransform.columns.3.y,  
+                    SCNVector3Make(result.worldTransform.columns.3.x,   
+                    result.worldTransform.columns.3.y,  
                     result.worldTransform.columns.3.z)
 
                 if startPosition == nil {
@@ -383,9 +384,7 @@ func measure(time: TimeInterval) {
             }
 
         } else {
-
             status = "NOT READY"
-
         }
 
     }
@@ -834,12 +833,12 @@ Physically Based Rendering (PBR) is a collection of render techniques to generat
 - Albedo \newline
 It is also known as the diffuse map. It is one of the factors that determines the amount of light reflected is material because it measures how much light that hits a surface is reflected without being absorbed. The light reflected would become visible. Figure 3.33 shows an example.
 
-    ![A diffuse map of bamboo wood](https://lh3.googleusercontent.com/vJs_Ltqm_3R5jz6B3iAeeWdNA2aDUPH9Xgdtck-ocoNQyhS9gNGf1zdt3jCnsMVJGGX9Ghys7yg)
+    ![A diffuse map of bamboo wood](https://lh3.googleusercontent.com/vJs_Ltqm_3R5jz6B3iAeeWdNA2aDUPH9Xgdtck-ocoNQyhS9gNGf1zdt3jCnsMVJGGX9Ghys7yg){width=50%}
 
 - Roughness \newline
 It describes how rough the material will be. The rougher the material, the dimmer the reflection, vice versa. Figure 3.34 shows an example. 
 
-    ![A roughness map of bamboo wood](https://lh3.googleusercontent.com/4eRq9vmDQjMiUtP4j-tt8lXR3nxE5fii5a0EwS8T4PUnhUV910M9bsjqPZET8AzIwcm944hWxjI)
+    ![A roughness map of bamboo wood](https://lh3.googleusercontent.com/4eRq9vmDQjMiUtP4j-tt8lXR3nxE5fii5a0EwS8T4PUnhUV910M9bsjqPZET8AzIwcm944hWxjI){width=50%}
 
 - Metalness \newline
     It describes how metallic the material will be. It is an important parameter in different rendering systems. Firstly, metals (conductors) are much more reflective than insulators (non-conductors). The high reflectivity prevents most light from reaching the interior and scattering, so metals look shiny in general. The more metallic the material, the shinier the reflection, vice versa.
@@ -853,7 +852,7 @@ It describes the nominal orientation of a surface at each point for use in light
 
     ![Adding protrusion by a normal map to the diffuse content](https://lh3.googleusercontent.com/ZPOeuYVoNFO5PGQmwij8klkDcduk3CefYBeHueh6mfk_ez-ujOAG1p0NTBUOdk0teuPlHagAiAo)
 
-    ![A normal map of bamboo wood with some protrusion on it](https://lh3.googleusercontent.com/U1-vqoaNnTiziRoXnIecZdGlkHi1C5yGAVuCD9weSXNSiGO4O18_kQqFCgf7EbPeBzjNqKGHFoE)
+    ![A normal map of bamboo wood with some protrusion on it](https://lh3.googleusercontent.com/U1-vqoaNnTiziRoXnIecZdGlkHi1C5yGAVuCD9weSXNSiGO4O18_kQqFCgf7EbPeBzjNqKGHFoE){width=50%}
 
 In Xcode SceneKit Editor, we can select a specific node and set the node's material in the material inspector as shown in Figure 3.38. We can select an image for each property, such as diffuse, metalness, roughness, normal, etc.
 

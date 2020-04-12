@@ -41,7 +41,7 @@ In this project, I will program in the native language, Swift. And I will use Re
 | Actor | User |
 | Brief Description | The user needs to search for a furniture object before placing the object into the camera scene. |
 | Preconditions | The user has entered the measuring home page. |
-| Flow of Events | 1. The user clicks the "Length"/"Width"/"Height" button. <\newline 2. The user measures the reality for the selected type of distance. \newline 3. The user repeats step 1-2 to measure other types of distance. \newline 4. The user clicks the "Search" button. \newline 5. A search result will be shown. |
+| Flow of Events | 1. The user clicks the "Length"/"Width"/"Height" button. \newline 2. The user measures the reality for the selected type of distance. \newline 3. The user repeats step 1-2 to measure other types of distance. \newline 4. The user clicks the "Search" button. \newline 5. A search result will be shown. |
 | Postconditions | A search result is shown. |
 | Alternative Flows and Exception | 1. If the measurement(s) does not match any furniture object's measurement in the database, the system will show "No Result". \newline 2. If the user does not measure any distance then clicks the "Search" button, the system will show a warning and nothing will be searched.  |
 
