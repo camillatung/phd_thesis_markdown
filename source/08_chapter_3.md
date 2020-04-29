@@ -830,13 +830,13 @@ func addDirectionalLight() {
 }
 ```
 
-![With spot lighting: the bed cabinet is less natural and its surface has higher contrast](https://lh3.googleusercontent.com/C-BHxfaOGN6c6_KSDqFvTP5iiKWY2R6DaJ4Sli4XdexUC6FPvpPHzD4Z4uY8XWqpyOZZBGvh6oc)
+![With spot lighting: the bed cabinet is less natural and its surface has a higher contrast](https://lh3.googleusercontent.com/F38v8OWm6_JahlV-F-Jbq0WfH_km9k_HYUO64w9hArkQDb6AKQPXUNqvo2fDnbQaawJ6M9XxOmk)
 
-![With directional lighting: the bed cabinet is less natural and with a shadow inside its drawer](https://lh3.googleusercontent.com/6F_ffL4F19DSvd73700_fCQjobficRP4a8I0G5gbJ26QQwEK0IJ2X-0UxrYCpaWNeHgCsrqw3Ec)
+![With directional lighting: the bed cabinet is more natural and with a shadow inside its drawer](https://lh3.googleusercontent.com/Ocwft46y7WO0uXaAdjgvlvwdbg2lch2AxDVsrMPpPWy-7nNatb9ERg9lO6laAaYMlaGNmcJvTuE)
 
-![With ambient lighting](https://lh3.googleusercontent.com/mbg4k5RmKCpfaMha4aA-eJijZLYV3wkjdwJ4VAPvDgLLp4Fli0okMsiv4E1OIo9wrINz1fxNsYA)
+![With ambient lighting: no shadow is cast](https://lh3.googleusercontent.com/B2iIydhaBmvMR-YpFAT3m9RPcy5adVILHynvb7NW545kpmCWVZfpCUePjSoatLPawN0B_aNvtvQ)
 
-![Without any lighting](https://lh3.googleusercontent.com/J2faLxSImYNbbBs93KoHZP4J-OcQUlSrqsXM1tbNEJjk3zhDVu9WeNFPkyv36p2AY2daVc5VXuc)
+![Without any lighting: no shadow is cast](https://lh3.googleusercontent.com/6p3O51pP1n8yWB1GBtTtAoXbgliNo_NrW-a0HMxDB1TopB-AT89XCydSS-BVXDMUdLogyHiC0w8)
 
 #### Shadow Baking using Blender
 
