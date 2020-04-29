@@ -6,7 +6,7 @@ During the development of Funiture Application, I have a deep revision about the
 ## Further Development
 
 ### Scanning and Detecting 3D Objects
-Apple Developer provides us a resource to scan and record the spatial features of the real-world objects, and the records can be saved as an `.arobject` file. [8] It can be used as an after-sale service of a furniture shop. For example, after the user buys a denim chair from the shop and put it at home, he wants to know the information of this denim chair, like the maintenance period, he can scan the denim chair. As the denim chair has a record as a reference object before he buys it, so when he scans the chair, the application can compare the scanning object with the reference object, and find out the related information. 
+Apple Developer provides us a resource to scan and record the spatial features of the real-world objects, and the records can be saved as an `.arobject` file [8]. It can be used as an after-sale service of a furniture shop. For example, after the user buys a denim chair from the shop and put it at home, he wants to know the information of this denim chair, like the maintenance period, he can scan the denim chair. As the denim chair has a record as a reference object before he buys it, so when he scans the chair, the application can compare the scanning object with the reference object, and find out the related information. 
 
 ### Light Detection in Images
 I would like to further study on detecting lights in images, so I can utilize the lighting information of an environment map when I am applying the image-based lighting in the application. For example, I can use the angle of the lighting direction in an image to define the angle of the shadows cast on the objects.

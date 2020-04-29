@@ -25,7 +25,7 @@ The bottom of a 3D object should be positioned exactly on top of the detected su
 
 ## Plane Detection
 
-Before augmenting the virtual content, the first step of this application is to detect any flat surface, i.e. plane, in the real world. ARKit not only detects planes in the real world, but also recognizes many types of real-world surfaces on supported iOS devices that have an A9 or later processor. [1] I will utilize this feature in my application, as shown in Figure 3.6.
+Before augmenting the virtual content, the first step of this application is to detect any flat surface, i.e. plane, in the real world. ARKit not only detects planes in the real world, but also recognizes many types of real-world surfaces on supported iOS devices that have an A9 or later processor [1]. I will utilize this feature in my application, as shown in Figure 3.6.
 
 Related class of this function:
 
@@ -429,20 +429,22 @@ When the user clicks the "Search" button, as shown in Figure 3.12, and given tha
 if let viewController = segue.destination as? 
 MeasureSearchResultTableViewController {
    
-   if (realm.objects(Measurement.self)[0].length! == "" || realm.objects(Measurement.self)[0].length! == "No Data") {
+   if (realm.objects(Measurement.self)[0].length! == "" 
+   || realm.objects(Measurement.self)[0].length! == "No Data") {
        viewController.length = "1000000"
    } else {
        viewController.length = realm.objects(Measurement.self)[0].length!
    }
    
-   if (realm.objects(Measurement.self)[0].width! == "" || 
-   realm.objects(Measurement.self)[0].width! == "No Data") {
+   if (realm.objects(Measurement.self)[0].width! == "" 
+   || realm.objects(Measurement.self)[0].width! == "No Data") {
        viewController.width = "1000000"
    } else {
        viewController.width = realm.objects(Measurement.self)[0].width!
    }
    
-   if (realm.objects(Measurement.self)[0].height! == "" || realm.objects(Measurement.self)[0].height! == "No Data") {
+   if (realm.objects(Measurement.self)[0].height! == "" 
+   || realm.objects(Measurement.self)[0].height! == "No Data") {
        viewController.height = "1000000"
    } else {
        viewController.height = realm.objects(Measurement.self)[0].height!
@@ -457,7 +459,8 @@ The Realm will retrieve the data in the `Furniture.realm` through the `Furniture
 // Read some data from the Realm
 
 realmResults = realmFurniture.objects(Furniture.self).filter
-("length <= \(Double(self.length)!) AND width <= \(Double(self.width)!) 
+("length <= \(Double(self.length)!) 
+AND width <= \(Double(self.width)!) 
 AND height <= \(Double(self.height)!)")
 ```
 
@@ -734,7 +737,7 @@ Related class of this function:
 
 First, in the `viewDidLoad()` method of the `PlaneViewController` class, all the default lights that SceneKit adds would be turned off, including `autoenablesDefaultLighting` and `automaticallyUpdatesLighting`.
 
-Then, the `lightingEnvironment` of the scene is set with an image. This process is to create a general lighting environment for the scene. This method applies Image Based Lighting (IBL). The concept is using the images taken in the real world to be the light source of the environment. [2] Therefore, the 3D objects will become much more realistic and accurate. [3] Mostly, the environment map is spherical because the sphere is used to surround the 3D objects. Therefore, the environment map can illuminate them. Also, the environment map will be reflected by shiny materials, like metals. But without the environment map, the metals will not be shiny and reflective, and will become fake. Figure 3.16-3.17 shows the reflective feature of metals of using an environment image to set up the lighting in the scene.
+Then, the `lightingEnvironment` of the scene is set with an image. This process is to create a general lighting environment for the scene. This method applies Image Based Lighting (IBL). The concept is using the images taken in the real world to be the light source of the environment [2]. Therefore, the 3D objects will become much more realistic and accurate [3]. Mostly, the environment map is spherical because the sphere is used to surround the 3D objects. Therefore, the environment map can illuminate them. Also, the environment map will be reflected by shiny materials, like metals. But without the environment map, the metals will not be shiny and reflective, and will become fake. Figure 3.16-3.17 shows the reflective feature of metals of using an environment image to set up the lighting in the scene.
 
 ![The doorknob is made of metal which is shiny, so it reflects the environment map on its body](https://lh3.googleusercontent.com/RtAuyDIHLcTSbjuqzdM7NCP3a8IZcx5n0H51z6mWBlmmRpPzyml1UzTFi_Kgc0ndwMb6Njfle-g)
 
@@ -764,7 +767,7 @@ In the `viewWillAppear(_ animated: Bool)` method of the `PlaneViewController` cl
 configuration.isLightEstimationEnabled = true
 ```
 
-Then, the method `renderer(_:updateAtTime:)`, which is called exactly once per frame will adjust the light intensity of the scene. I get the `lightEstimate` of the current frame, and modify the scene's intensity of `lightingEnvironment` to be the ambient intensity of the `lightEstimate`. The estimated ambient intensity is normalized by dividing with 1000.0 because 1000.0 intensity is neutral. [4] Figure 3.19-3.21 shows the change of the lighting environment intensity.
+Then, the method `renderer(_:updateAtTime:)`, which is called exactly once per frame will adjust the light intensity of the scene. I get the `lightEstimate` of the current frame, and modify the scene's intensity of `lightingEnvironment` to be the ambient intensity of the `lightEstimate`. The estimated ambient intensity is normalized by dividing with 1000.0 because 1000.0 intensity is neutral [4]. Figure 3.19-3.21 shows the change of the lighting environment intensity.
 
 ```java
 func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -795,7 +798,7 @@ Related class of this function:
 
 - `PlaneViewController` class
 
-Shadows can make the 3D objects looks more realistic. I add shadows to the scene by adding directional light. [5] Figure 3.22 shows the 4 commonly used lights in SceneKit.
+Shadows can make the 3D objects looks more realistic. I add shadows to the scene by adding directional light [5]. Figure 3.22 shows the 4 commonly used lights in SceneKit.
 
 ![Common light types in SceneKit](https://lh3.googleusercontent.com/r94ExP6iJRoLwHraoUen4xhBoOju6uSnlDKlk9xPsbJsPulv6kBrkVxqWxKQ_bkK_sHFJLLJC80){width=100%}
 
@@ -862,10 +865,10 @@ After I got the shadow image, which is Figure 3.29. As shown in Figure 3.30, I g
 
 ### Physically Based Rendering
 
-Physically Based Rendering (PBR) is a collection of render techniques to generate objects which look more realistic and accurate. [6] When we add material to an object using PBR, we usually provide the following information as parameters:
+Physically Based Rendering (PBR) is a collection of render techniques to generate objects which look more realistic and accurate [6]. When we add material to an object using PBR, we usually provide the following information as parameters:
 
 - Albedo \newline
-It is also known as the diffuse map. It is one of the factors that determines the amount of light reflected is material because it measures how much light that hits a surface is reflected without being absorbed. [7] The light reflected would become visible. Figure 3.33 shows an example.
+It is also known as the diffuse map. It is one of the factors that determines the amount of light reflected is material because it measures how much light that hits a surface is reflected without being absorbed [7]. The light reflected would become visible. Figure 3.33 shows an example.
 
     ![A diffuse map of bamboo wood](https://lh3.googleusercontent.com/vJs_Ltqm_3R5jz6B3iAeeWdNA2aDUPH9Xgdtck-ocoNQyhS9gNGf1zdt3jCnsMVJGGX9Ghys7yg){width=50%}
 
@@ -928,9 +931,11 @@ When the users changes the selected segment, the image of the furniture object w
 @IBAction func indexChanged(_ sender: Any) {
     if let viewImage = view.viewWithTag(100) as? UIImageView {
         if let image = realmResults![0].name {
-            viewImage.image = UIImage(named: "\(image)-\(materialCustom.titleForSegment
+            viewImage.image = 
+            UIImage(named: "\(image)-\(materialCustom.titleForSegment
             (at: materialCustom.selectedSegmentIndex)!.replacingOccurrences
-            (of: " ", with: "-", options: .literal, range: nil).lowercased()).png")
+            (of: " ", with: "-", options: .literal, 
+            range: nil).lowercased()).png")
         }
     }
 }
@@ -963,7 +968,8 @@ furnitureMaterial.normal.contents = UIImage
 (named: "art.scnassets/textures/\(material)-normal.jpg")
 
 furnitureNode.childNode
-(withName: "main", recursively: true)!.geometry?.firstMaterial = furnitureMaterial
+(withName: "main", recursively: true)!.geometry?.firstMaterial 
+= furnitureMaterial
 ```
 ![Selecting the segment of lace material in the detail page](https://lh3.googleusercontent.com/jwstcOOdaQ3MGh9s7cSBZHd4VR3zBV-LUtYPagzrCFHEJUkUJtxAqr0ypmQB_ZBVfPSPd1aV408)
 
