@@ -2,7 +2,7 @@
 
 ## Impact of Virtual Content Realism
 
-The three components of virtual content realism are estimated ambient lighting, shadows and physically based rendering, which can provide a more realistic view for the users. The estimated ambient lighting can apply to an object according to the actual change of light. The shadows can apply to the object at its body by directional lighting and below it by the image of baked shadow. The physical based rendering can render different materials for the objects. It textures different materials, so the materials will be similar to what we see in real life. 
+The three components of virtual content realism are estimated ambient lighting, shadows and physically based rendering, which can provide a more realistic view for the users. The estimated ambient lighting can apply to an object according to the actual change of light. The shadows can apply to the object at its body by directional lighting and below it by the image of baked shadow. The physically based rendering can render different materials for the objects. It textures different materials, so the materials will be similar to what we see in real life. 
 
 ## Impact of Measurement
 

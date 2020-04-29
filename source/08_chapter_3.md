@@ -10,22 +10,22 @@ In this project, I download all 3D models online in `Collada (.dae)` file format
 
 In this project, I use Xcode SceneKit Editor to edit the scenes. I convert the Collada file to a SceneKit file. I copy the Collada file to the `art.scnassets` folder, which is the default SceneKit Catalog. Then, I click the file, so the corresponding scene graph of the file will be displayed in the editor. In the menu bar, I click "Editor", then "Convert to SceneKit file format (.scn)", as shown in Figure 3.2, so a scene file will be generated.
 
-![Convert the Collada file to a SceneKit file](https://lh3.googleusercontent.com/VHVtcisVLJhVAYuh5Md1_5jCmjcPxoAXTuYQd2S-Q5QKC-cAp89xhnA8cWMmj5slO1uj4yLJHhI)
+![Convert the Collada file to a SceneKit file](https://lh3.googleusercontent.com/zhd2SFSTdl8z0Mzhd840xdxML98bAdRb-m__veudtp1pOce0UrFjpxfkHpA4TT4wxhsg37pCZus)
 
 
 After the conversion, first, I remove all the unused camera and light nodes. Then, I set the material of the nodes in the material inspector. The details of the material setting can be found below at "3.6.3 Physically Based Rendering". Next, in the scene graph, I create an empty node and the editor will add it to the center of our scene by default, as shown in Figure 3.3. Both the default position and Euler are (0, 0, 0) for (x, y, z). I rename it to "Body" and drag all other nodes underneath it. This newly-created node can act as a base node of the scene. It can group the nodes, so positioning or scaling the nodes will be easier as I do not need to perform those actions to the nodes one by one. Instead, I can perform those actions to the base node.
 
-![The base node is added to the scene](https://lh3.googleusercontent.com/HQfJTt1Y1magF1xJxtUrEuHKWZL8vifCbHWby6rHg_2BdzR9NnPlCBCMyM1PQITJIbySQV5DUJw)
+![The base node is added to the scene](https://lh3.googleusercontent.com/0KnYqqXnTSF96TvYvbVfDV967bFkv7fayE-a5dUsYKYJTyS0m1zI3BsLFAWqWf8nkBCl2OkuCRU)
 
 The bottom of a 3D object should be positioned exactly on top of the detected surface. SceneKit operates in a “Y-up” system as shown in Figure 3.4, which means that the y-axis is pointing up. Each node shows a coordinate system as shown in Figure 3.5. Dragging upwards or downwards the arrow pointing up is changing the y-value of the object's position. The object will move up or down. I select all the nodes at the same time and dragged them upwards or downwards until the bottom of the object is touching the grid line in the editor. Eventually, the scene file is now ready to be used in ARKit.
 
 ![SceneKit coordinate system](https://lh3.googleusercontent.com/JT85DQ8qf7UgfrvsyFyrn_Cj89jy4RMHnGYJweWFCJZZbuvGJSmncvXhnp-frlN4aJXK_v2dutQ)
 
-![The coordinate of the base node](https://lh3.googleusercontent.com/VhXKTZ2kmsmy0_7xq0iAkylfD7rxCZMtswkw3XVqNX7SxNBHgNI6HXh3Vm1joP2qMykNzX9BowY)
+![The coordinate of the base node](https://lh3.googleusercontent.com/MrpYW-v08O11HjAfGYehe95qE4Ew6PMGQGOsDJUUd4UCU1HLj9pHAy_5MhEXyDuzCRvlyWRcmdM)
 
 ## Plane Detection
 
-Before augmenting the virtual content, the first step of this application is to detect any flat surface, i.e. plane, in the real world. ARKit not only detects planes in the real world, but also recognizes many types of real-world surfaces on supported iOS devices that have an A9 or later processor. I will utilize this feature in my application, as shown in Figure 3.6.
+Before augmenting the virtual content, the first step of this application is to detect any flat surface, i.e. plane, in the real world. ARKit not only detects planes in the real world, but also recognizes many types of real-world surfaces on supported iOS devices that have an A9 or later processor. [1] I will utilize this feature in my application, as shown in Figure 3.6.
 
 Related class of this function:
 
@@ -36,7 +36,7 @@ Related class of this function:
 
 `ARSession` class is the basis of controlling an AR experience. It is the main object for coordinating the major processes that ARKit performs to provide an AR experience.
 
-![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/IP6iHTKlhMsk57spyEpGX6YCX397yIIwZAltJR_atD4MFQXBnnQcuNq5Ggx-312NHRJZcLcfP00)
+![The application is performing plane detection with "Seat" detected](https://lh3.googleusercontent.com/15nQgngOZXe5gMZhydSEZvbaymCXzznJAati7GWKrjEEFGfmKzzVOCpaheQzi8rw9g33uSnjLro)
 
 First, in order to run an `ARSession` class, I provide a session configuration. In the `viewWillAppear(_ animated: Bool)` method of the `PlaneViewController` class, which is called every time the view is displayed, a session configuration is created using `ARWorldTrackingConfiguration`  class that is a sub-class of `ARConfiguration` class. `ARWorldTrackingConfiguration`  class can track the iOS device's position and orientation. The relationship between ARSession and ARConfiguration subclass is shown in Figure 3.7. 
 
@@ -145,11 +145,11 @@ Moreover, because of the session configuration, ARKit will automatically add and
 ## Furniture Search
 In this project, I developed three search methods, which are by keyword, by measurement and by plane selection, as shown in Figure 3.8-3.10.
 
-![Search Furniture by Keyword](https://lh3.googleusercontent.com/LlIfwe1qnvEJKFysuTuRKetUlYUQfU3OMekbjKZNoGHeK30q-J9nvv8kdZXYXK92THmyk4Q3RbI)
+![Search Furniture by Keyword](https://lh3.googleusercontent.com/Qs_SawNUIbcnqutj3vvE15-mXKBmAG-ACB8_W1a-2YxcyftmInzS68nds3_IqocG38KFuABOFaw)
 
-![Search Furniture by Measurement](https://lh3.googleusercontent.com/AeGlI1bjqimEJoiRSGbmNieTl-dNZKNYX0b2x6DGJpvcDkwvhtlZoXF0Uc3NK6Rd7jSJ-_Q4Img)
+![Search Furniture by Measurement](https://lh3.googleusercontent.com/82SgoeaynbFK0zFkKuWp9Y5vwYywrd3PYZea4kp47RTbGjJbpK2wvvHZOHndMLpWOVoujchp5Hs)
 
-![Search Furniture by Plane Selection](https://lh3.googleusercontent.com/H_9yLKpOhobY0rmWXqs-fEn-p6BOoBKk1gguWhrf_Y1qG3yNYwqcDXSEYjJJ1qdb4kE8JfXOfw8)
+![Search Furniture by Plane Selection](https://lh3.googleusercontent.com/gPtEHAyKwqX8oupUUzGdUkIkY4z0s-pymrkA98SumHnSYGXNR4SYQKTxe3RF6tn5S95eib_0F1A)
 
 ### Simple Search for Furniture by Keyword
 
@@ -201,7 +201,7 @@ Also, I set up the grid's material using the `SCNMaterial` class. I set the diff
 
 Besides, the `physicsBody` of the grid node is the `SCNPhysicsBody` class. Its type is *.static*, and its shape is the `SCNPhysicsShape` class. Also, the `categoryBitMask` of the `physicsBody` of this node is equal to 2, which means that this body is static, as the default value of `categoryBitMask` is 1, which means that the body is dynamic.
 
-Moreover, I will use `SCNVector3Make(_:_:_:)` to set the grid node's position. The x-value is the x-vlaue of the anchor's center, while the z-value is the z-vlaue of the anchor's center. The y-value is 0. It will return a three-component vector. 
+Moreover, I will use `SCNVector3Make(_:_:_:)` to set the grid node's position. The x-value is the x-value of the anchor's center, while the z-value is the z-value of the anchor's center. The y-value is 0. It will return a three-component vector. 
 
 Next, same as before, because the grid node's geometry, which is the `SCNPlane` class, is vertically oriented in its local coordinate system, so it is rotated to let the extent node match the orientation of `ARPlaneAnchor`.
 
@@ -328,7 +328,7 @@ func calculateAngleInRadians(from: SCNVector3, to: SCNVector3) -> Float {
 }
 ```  
 
-![The measuring path and the distance result](https://lh3.googleusercontent.com/dzhwI5qQQUeyQL_RLlvJl2a28ye2zmQ_UT5NfQ7BnWbvBf-2hhhWa8XtdCAV1KYP8g0sk4Bw4lI)
+![The measuring path and the distance result](https://lh3.googleusercontent.com/FOC2_T_-0XqKY8q9HAFxTvW6SX0_xtXZ3JoKOjuVPjFRo2N8mUQHJZ3Tbs5H79vAkcTW4A0s9VQ)
 
 #### Calculation of Distance
 
@@ -421,9 +421,45 @@ func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
 The final measured distance will be saved to the temporary Realm using the `Measurement` class which is the Realm data model, and passed to the `MeasureHomeTableViewController` class using `segue.destination`. The `MeasureHomeTableViewController` class manages the scene showing a table view of the "Search", "Length", "Width", "Height" button. The user tells the application which type of distance he is going to measure by clicking different buttons.
 
-![The home page of measuring](https://lh3.googleusercontent.com/AXGpMWgH4Yn02w_LhxXyXDWWNGPt-5lxs-DHoim0ONr9-A461gM7T3hO5Tw4YO4PTCfGfmaTlCM)
+![The home page of measuring](https://lh3.googleusercontent.com/V5NKYEPYXvT9vAW2vlbcXUd4okXP9VuD6AJoqYWrUWGUrjR_OXeJcS1QMw0GtgYaJYLakxcILw4)
 
-When the user clicks the "Search" button, as shown in Figure 3.12, and given that there is at least one distance of length, width and height are saved into Realm, the distance(s) will be the filtering parameter for searching for furniture and passed using `segue.destination` to the `MeasureSearchResultTableViewController` class as the measurement for searching for furniture. The Realm will retrieve the data in the `Furniture.realm` through the `Furniture` class, and the Realm result will be filtered by the length, width and/or height and the final result will be displayed.
+When the user clicks the "Search" button, as shown in Figure 3.12, and given that there is at least one distance of length, width and height are saved into Realm, the distance(s) will be the filtering parameter for searching for furniture and passed using `segue.destination` to the `MeasureSearchResultTableViewController` class as the measurement for searching for furniture.
+
+```java
+if let viewController = segue.destination as? 
+MeasureSearchResultTableViewController {
+   
+   if (realm.objects(Measurement.self)[0].length! == "" || realm.objects(Measurement.self)[0].length! == "No Data") {
+       viewController.length = "1000000"
+   } else {
+       viewController.length = realm.objects(Measurement.self)[0].length!
+   }
+   
+   if (realm.objects(Measurement.self)[0].width! == "" || 
+   realm.objects(Measurement.self)[0].width! == "No Data") {
+       viewController.width = "1000000"
+   } else {
+       viewController.width = realm.objects(Measurement.self)[0].width!
+   }
+   
+   if (realm.objects(Measurement.self)[0].height! == "" || realm.objects(Measurement.self)[0].height! == "No Data") {
+       viewController.height = "1000000"
+   } else {
+       viewController.height = realm.objects(Measurement.self)[0].height!
+   }
+   
+}
+```
+
+The Realm will retrieve the data in the `Furniture.realm` through the `Furniture` class, and the Realm result will be filtered by the length, width and/or height and the final result will be displayed.
+
+```java
+// Read some data from the Realm
+
+realmResults = realmFurniture.objects(Furniture.self).filter
+("length <= \(Double(self.length)!) AND width <= \(Double(self.width)!) 
+AND height <= \(Double(self.height)!)")
+```
 
 ### Search for Furniture by Plane Selection
 
@@ -505,7 +541,7 @@ When the user clicks the "Search" button as shown in Figure 3.13 in the
 `PlaneTypeSearchResultTableViewController` class, the Realm will retrieve the data in the  
 `Furniture.realm` through the `Furniture` class, then the Realm result will be filtered by the plane type and the final result will be displayed.
 
-![The "Search" button is located at the top right corner](https://lh3.googleusercontent.com/F00RIQVEWooVwUD6j9-i-FH9W10scFRUvJRyKmhZM8wlrSR94JjBL5q_pfTcnEJfjZByAqJLmac)
+![The "Search" button is located at the top right corner](https://lh3.googleusercontent.com/kJT55-U5EcPdj__T4fkm4ohorbiSM1ztwNFLCSKy5FVZ6KKE1AmUUdOFOJ806iXXnUBa89VoFxs)
 
 ```java
 // Read some data from the Realm
@@ -525,7 +561,7 @@ Related class of this function:
 
 First of all, when the user has already searched for at least one furniture object, he can go to the corresponding detail page of that object, as shown in Figure 3.14. In the detail page, he can click the "Place" button at the bottom of the furniture photo, and in the `DetailViewController` class the furniture ID will be passed to the `PlaneViewController` class using `segue.destination`.
 
-In `Main.StoryBoard`, the `Tap Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view . A sent action `@IBAction`, which is called `screenTapped`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UITapGestureRecognizer`.
+In `Main.StoryBoard`, the `Tap Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view. A sent action `@IBAction`, which is called `screenTapped`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UITapGestureRecognizer`.
 
 In the `@IBAction`, which is the `screenTapped(_ sender: UITapGestureRecognizer)` method, when the user taps the scene view, the touch location will be got. The hit test of `existingPlaneUsingExtent` will search for any point which lies within the area defined by the plane's center and extent properties in the touch location. If the hit test successfully gets a point, which means that the user has tapped an existing plane area, the anchor as `ARPlaneAnchor` of the hit test result will be got and the function `addFurniture(result: ARHitTestResult)` will be run. In this function, a container called `furnitureScene`, which inherits from the `SCNScene` class, is created to specify the 3D content's location. Here, the location is `art.scnassets/scene/\(sceneName).scn`, in which the scene name is the furniture name actually, and it is got using the furniture ID passed from the `DetailViewController` class. When the 3D content is got, a variable called `furnitureNode` is created with the `Body` node of the 3D content that the `furnitureScene` got.
 
@@ -559,9 +595,9 @@ func addFurniture(result: ARHitTestResult) {
 }
 ```
 
-![The detail page of the bed cabinet](https://lh3.googleusercontent.com/x99zmkvgNiB0e8VjVTz6E9SvhZFhq0T-m9zpefIsNitppGzVrqUieDIrTvsYcA-7qhF43chlqh4)
+![The detail page of the bed cabinet](https://lh3.googleusercontent.com/Q-wVrZ5cGHAAzKZbjVATYuTejTQbEV0LyyIkwggk39bQRnOHuaODrLP0_H4UXNzgRkL7XSIX2do)
 
-![A pillow is placed on the bed](https://lh3.googleusercontent.com/BtWOle5OxeZ6vQf5GPzj5pbmSkOtUT4Q1AlCRoxxb1DfDLQQfSF5Zgy5iCeR4ROeZqXkwDOQjSg)
+![A square cushion is placed on the bed](https://lh3.googleusercontent.com/-hWeEfa9uREe1HUyQERiYHGhXxzTDdcrmSanKnEPoZWLSoNVx-Ra98T-mJ4wSBw-LCI5K00W0hY)
 
 ### Deletion of Virtual Content from the Camera Scene
 
@@ -589,7 +625,7 @@ Related class of this function:
 
 ### Pan Gesture for Transformation
 
-In `Main.StoryBoard`, the `Pan Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view . A sent action `@IBAction`, which is called `screenPanned`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIPanGestureRecognizer`.
+In `Main.StoryBoard`, the `Pan Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view. A sent action `@IBAction`, which is called `screenPanned`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIPanGestureRecognizer`.
 
 In the `screenPanned(_ sender: UIPanGestureRecognizer)` method, first, the sender's location is got, which means that the location of the continuous movement of the user's finger on the screen is got. Because this gesture recognizer only recognizes continuous gestures, any discrete event, such as a tap, does not report change. 
 
@@ -636,7 +672,7 @@ Therefore, when user pans the virtual object, the position of the virtual object
 
 ### Pinch Gesture for Enlargement or Reduction
 
-In `Main.StoryBoard`, the `Pinch Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view . A sent action `@IBAction`, which is called `screenPinched`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIPinchGestureRecognizer`.
+In `Main.StoryBoard`, the `Pinch Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view. A sent action `@IBAction`, which is called `screenPinched`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIPinchGestureRecognizer`.
 
 In the `screenPinched(_ sender: UIPinchGestureRecognizer)` method, when the `sender's state` is `changed`, which means that the user is pinching against the screen, either outwards or inwards, the virtual object's `simdScale` is got. Each object has its `simdScale`, which is the scale factor. At the same time, it is multiplied with the `sender's scale`, and this calculation result is set to be the new scale.  Then, the `simdScale` of the virtual object is set to be a new scale.
 
@@ -660,7 +696,7 @@ Therefore, when the user pinches outwards against the virtual object, it is enla
 
 ### Rotation Gesture for Rotation
 
-In `Main.StoryBoard`, the `Rotation Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view . A sent action `@IBAction`, which is called `screenRotated`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIRotationGestureRecognizer`.
+In `Main.StoryBoard`, the `Rotation Gesture Recognizer` object is added to the `Plane Scene`. It is also added to the referencing outlet collection of the scene view. A sent action `@IBAction`, which is called `screenRotated`, is created to send an action to the corresponding custom class of the `Plane Scene`, which is the `PlaneViewController` class, as a method. In the `PlaneViewController`, the `sender` of the `@IBAction` is `UIRotationGestureRecognizer`.
 
 In the `screenRotated(_ sender: UIRotationGestureRecognizer)` method, a switch statement is used. When the `sender's state` is `began`, the `originalRotation` is set to be the Euler angle of the virtual object's node. On the other hand, when the `sender's state` is `changed`, which means the user is performing rotation gesture against the virtual object, the y-value of the `originalRotation` is subtracted by the float of the `sender's rotation`. Then, the Euler angle is set to be the rotation value after subtraction.
 
@@ -698,11 +734,11 @@ Related class of this function:
 
 First, in the `viewDidLoad()` method of the `PlaneViewController` class, all the default lights that SceneKit adds would be turned off, including `autoenablesDefaultLighting` and `automaticallyUpdatesLighting`.
 
-Then, the `lightingEnvironment` of the scene is set with an image. This process is to create a general lighting environment for the scene. This method applies Image Based Lighting (IBL). The concept is using the images taken in the real world to be the light source of the environment. Therefore, the 3D objects will become much more realistic and accurate. Mostly, the environment map is spherical because the sphere is used to surround the 3D objects. Therefore, the environment map can illuminate them. Also, the environment map will be reflected by shiny materials, like metals. But without the environment map, the metals will not be shiny and reflective, and will become faked. Figure 3.16-3.17 shows the reflective feature of metals of using an environment image to set up the lighting in the scene.
+Then, the `lightingEnvironment` of the scene is set with an image. This process is to create a general lighting environment for the scene. This method applies Image Based Lighting (IBL). The concept is using the images taken in the real world to be the light source of the environment. [2] Therefore, the 3D objects will become much more realistic and accurate. [3] Mostly, the environment map is spherical because the sphere is used to surround the 3D objects. Therefore, the environment map can illuminate them. Also, the environment map will be reflected by shiny materials, like metals. But without the environment map, the metals will not be shiny and reflective, and will become fake. Figure 3.16-3.17 shows the reflective feature of metals of using an environment image to set up the lighting in the scene.
 
-![The nuts of the bed cabinet are made of streaked metal which is shiny, so they reflects the environment map](https://lh3.googleusercontent.com/Vvzzgk8lyxMwu4zQr9k9Oee-e-OSAI6v7IrSE2yBE6Wa89ykOm7g2lF0_a1pw0J85NUXXlQSSWU)
+![The doorknob is made of metal which is shiny, so it reflects the environment map on its body](https://lh3.googleusercontent.com/RtAuyDIHLcTSbjuqzdM7NCP3a8IZcx5n0H51z6mWBlmmRpPzyml1UzTFi_Kgc0ndwMb6Njfle-g)
 
-![Without environment map, the nuts become black in color and they look faked](https://lh3.googleusercontent.com/_1rr8QjDc02hp8924OzWqf-XFTZ9l1U-M6iXTAt1Ki5v4P1VtwbMS6wR6Dd5vzGA7EMeWO-VbsY)
+![Without the environment map, the doorknob becomes black and not shiny anymore, so it looks fake](https://lh3.googleusercontent.com/o8MJwm_-gHHJWlIHveL4dQbyKwDX0qUkfYlfma76l4G1mqulLyXCGYwvO58QhYo3WhfiHQA6q-E)
 
 Many types of spherical environment maps can be found online, like Lugher Texture (http://www.lughertexture.com). `spherical.jpg` shows an ordinary home lighting environment, so I will use this image as an environment lighting in this project. Figure 3.18 shows the environment image used.
 
@@ -728,7 +764,7 @@ In the `viewWillAppear(_ animated: Bool)` method of the `PlaneViewController` cl
 configuration.isLightEstimationEnabled = true
 ```
 
-Then, the method `renderer(_:updateAtTime:)`, which is called exactly once per frame will adjust the light intensity of the scene. I get the `lightEstimate` of the current frame, and modify the scene's intensity of `lightingEnvironment` to be the ambient intensity of the `lightEstimate`. The estimated ambient intensity is normalized by dividing with 1000.0 because 1000.0 intensity is neutral. Figure 3.19-3.21 shows the change of the lighting environment intensity.
+Then, the method `renderer(_:updateAtTime:)`, which is called exactly once per frame will adjust the light intensity of the scene. I get the `lightEstimate` of the current frame, and modify the scene's intensity of `lightingEnvironment` to be the ambient intensity of the `lightEstimate`. The estimated ambient intensity is normalized by dividing with 1000.0 because 1000.0 intensity is neutral. [4] Figure 3.19-3.21 shows the change of the lighting environment intensity.
 
 ```java
 func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -745,11 +781,11 @@ func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 }
 ```
 
-![Under brighter lights](https://lh3.googleusercontent.com/z8KM0e04oxg_Zz01maoORl5KnAWr1t75Pd82YPpToDvinM-s8HwpqohgTyzW6JpOcgBo-HTXMFM)
+![Under brighter lights](https://lh3.googleusercontent.com/pXaa-sDv0coyolZkkfAun4_w_-Hay_sw4CPLOoDKEldeRqmsvmiGVbFYlEAsIL7fAlCpGhdRkSM)
 
-![Under dimmer lights](https://lh3.googleusercontent.com/gR2XKDMAsc-mZpD2XWv6-Bg8WHuE_UZle9qoDhQh2khGYheTJ1JO_ZJvg_TTPEvFW_mYzvGNNy4)
+![Under dimmer lights](https://lh3.googleusercontent.com/Zju5tG2NRaH9CipQc2DBav4AyEiKoAVs1qYeMEW548gekVR-H-d0pxU-L8wYyfrXaBXiCC8MpOk)
 
-![The object will even disappear in the dark as the light intensity is very low](https://lh3.googleusercontent.com/xOIMvZNxTLDLJTTBPB86NyHr9qKsVm-RN0cc9BVZLOCzttC02qXiPzVerrHtn1dQoy9s1pns-Eg)
+![When the light intensity is very low](https://lh3.googleusercontent.com/45jRlG5d0_PKHkHYWLo5G2jIs0LUD3gGCj9PGHVMXcVZ5Pt2uOyFtu4T03dUXaiWvJt3oXxgkx4)
 
 ### Shadows
 
@@ -759,7 +795,7 @@ Related class of this function:
 
 - `PlaneViewController` class
 
-Shadows can make the 3D objects looks more realistic. I add shadows to the scene by adding directional light. Figure 3.22 shows the 4 commonly used lights in SceneKit.
+Shadows can make the 3D objects looks more realistic. I add shadows to the scene by adding directional light. [5] Figure 3.22 shows the 4 commonly used lights in SceneKit.
 
 ![Common light types in SceneKit](https://lh3.googleusercontent.com/r94ExP6iJRoLwHraoUen4xhBoOju6uSnlDKlk9xPsbJsPulv6kBrkVxqWxKQ_bkK_sHFJLLJC80){width=100%}
 
@@ -767,7 +803,7 @@ By adding directional light to the scene, the shadows will be cast on the object
 
 Next, I create a black color with 50% opacity and set it as the *shadowColor*. This will make the casting shadows look more grey and realistic. I also increase its *shadowSampleCount* to create smoother shadows with and higher resolution. Finally, I create a node called "directionalLightNode", attach the above light to it, and rotate it so that it is facing the floor at a slightly downward angle. The "directionalLightNode" is ready and it is added as the child node using an instance method, which is *addChildNode(_:)*, so it appears in the scene.
 
-Figure 3.23-3.25 show that, the spot light does not provide a more natural view than directional light and that is why I choose the directional lighting. Moreover, Figure 3.25-3.26 show that, the bed cabinet with directional lighting will have a shadow inside the drawer. In comparison, the bed cabinet without any lighting does not have a shadow inside the drawer.
+Figure 3.23-3.24 show that, the spot lighting results in a less natural view with higher contrast, compared with directional lighting, and that is why I choose the directional lighting for this project. Moreover, Figure 3.25-3.26 show that, the bed cabinet with ambient lighting has nearly no difference with that without any lighting, and that is why I need to add directional lighting instead of ambient lighting. (Remarks: the shadow below the bed cabinet in Figure 3.23-3.26 is added alternatively which is not related the any lighting, see below at "3.6.2.2 Shadow Baking using Blender".)
 
 ```java
 func addDirectionalLight() {
@@ -794,19 +830,17 @@ func addDirectionalLight() {
 }
 ```
 
+![With spot lighting: the bed cabinet is less natural and its surface has higher contrast](https://lh3.googleusercontent.com/C-BHxfaOGN6c6_KSDqFvTP5iiKWY2R6DaJ4Sli4XdexUC6FPvpPHzD4Z4uY8XWqpyOZZBGvh6oc)
 
-![With spot light: the bed cabinet is less natural and its surface has higher contrast](https://lh3.googleusercontent.com/hbG-RLr20e9KZ9pPT_7I3veMS0UHjbUwRpyzN0_9Y-c3ByovKdpGB5fhxHktODZLBgPI5XYHRK4)
+![With directional lighting: the bed cabinet is less natural and with a shadow inside its drawer](https://lh3.googleusercontent.com/6F_ffL4F19DSvd73700_fCQjobficRP4a8I0G5gbJ26QQwEK0IJ2X-0UxrYCpaWNeHgCsrqw3Ec)
 
-![With spot light: the bed cabinet's surface becomes even darker with dimmer ambient lighting in the real environment](https://lh3.googleusercontent.com/PZYIFg-vQTt6J8zUIDh0eihWqZvEfSWB5Z6AiuqXLnUkY62mh-sVbz_n-t1I0xjBOVN79OpPNmY)
+![With ambient lighting](https://lh3.googleusercontent.com/mbg4k5RmKCpfaMha4aA-eJijZLYV3wkjdwJ4VAPvDgLLp4Fli0okMsiv4E1OIo9wrINz1fxNsYA)
 
-![With directional lighting](https://lh3.googleusercontent.com/gzcNFZh043JedsPN9O0LTAR8x23zD_1n6GRvMcftBToHEJhhwDViLzI_w-jkZ1Ulxfn2itBlnwU)
+![Without any lighting](https://lh3.googleusercontent.com/J2faLxSImYNbbBs93KoHZP4J-OcQUlSrqsXM1tbNEJjk3zhDVu9WeNFPkyv36p2AY2daVc5VXuc)
 
-![Without any lighting](https://lh3.googleusercontent.com/wpJCbIEMQPH-5ilRrfHG44eqBDo_1Z-uP5s9luVuUcFawg4UblqTVOy6jAlZaRn7oF6TQG0Ls0E)
+#### Shadow Baking using Blender
 
-
-#### Shadow Baking uisng Blender
-
-Normally, there are shadows below each objects in the daily life. If there is not any shadow below an object, the object will be like it is floating in the air. I used Blender, which is a free 3D computer graphics software, to bake a shadow for each furniture object. Figure 3.27 shows the Blender software. 
+Normally, there are shadows below each object in daily life. If there is not any shadow below an object, the object will be like it is floating in the air. I used Blender, which is a free 3D computer graphics software, to bake a shadow for each furniture object. Figure 3.27 shows the Blender software. 
 
 ![Blender software](https://lh3.googleusercontent.com/UxWKGu0hGCYPM4Hq1vouFDtVljot6xbK99yukkKRa7jJw6r0n5GtyLurTzAYYLGyQT1_sqFDT9k)
 
@@ -820,18 +854,18 @@ But I only want the shadow on the plane. The right editor is node editor, where 
 
 After I got the shadow image, which is Figure 3.29. As shown in Figure 3.30, I go to Xcode SceneKit Editor and create a plane below the 3D object. Then, I go to the material inspector of that plane, and set its diffuse map to the shadow image. And I change the opacity of the shadow image to 0.5-0.7 to make it semi-transparent. Figure 3.31-3.32 show the result of with or without a shadow below the object. The one with a shadow below will be more realistic and it blends more into the environment than the one without a shadow below.
 
-![Adding a shadow below the tea table](https://lh3.googleusercontent.com/2jlmDsSogAmixD4Lwos8NFax84UKo2_l1sIxywdxz_1lj2CxkyfTThrAaoVK8MW9zj3kNfLSj8c)
+![Adding a shadow below the tea table](https://lh3.googleusercontent.com/uR1zcJA3g1r11r7nwQBsTu9inQ6jCSA_KdEVd6Bspg6holx6lFY_9sYJb85GoHwODZPhhzA3-M8)
 
-![With a shadow below](https://lh3.googleusercontent.com/NhyPNIwTvGgk7lr8AfFW3Uiw5PbGRE0czMIIFm02vBMAazNytsY0wfxpf7nDc3OIXEmCeq-L7P4)
+![With a shadow below](https://lh3.googleusercontent.com/efOngIyGKW7ptXfR7ebLRv7-7kbvrTougFlL6QiBGLCul4e8-bE0O2ne6i0rjQUgX_r6T8edsww)
 
-![Without a shadow below](https://lh3.googleusercontent.com/EjpuHlceVJ3Wm9zqZfslpJipuEYYyLYZjPrzAXDx_QLoPG1V6CaunGeK_vkqdC64BD_16H4wQrM)
+![Without a shadow below](https://lh3.googleusercontent.com/7ZSTFaAnp6pu-SQftEpL2h-y9ioOnqaJaj6Z9EiBhriV2U3IElXUp9o5RC-tklg_WX9Xau129l0)
 
 ### Physically Based Rendering
 
-Physically Based Rendering (PBR) is a collection of render techniques to generate objects which look more realistic. When we add material to an object using PBR, we usually provide the following information as parameters:
+Physically Based Rendering (PBR) is a collection of render techniques to generate objects which look more realistic and accurate. [6] When we add material to an object using PBR, we usually provide the following information as parameters:
 
 - Albedo \newline
-It is also known as the diffuse map. It is one of the factors that determines the amount of light reflected is material because it measures how much light that hits a surface is reflected without being absorbed. The light reflected would become visible. Figure 3.33 shows an example.
+It is also known as the diffuse map. It is one of the factors that determines the amount of light reflected is material because it measures how much light that hits a surface is reflected without being absorbed. [7] The light reflected would become visible. Figure 3.33 shows an example.
 
     ![A diffuse map of bamboo wood](https://lh3.googleusercontent.com/vJs_Ltqm_3R5jz6B3iAeeWdNA2aDUPH9Xgdtck-ocoNQyhS9gNGf1zdt3jCnsMVJGGX9Ghys7yg){width=50%}
 
@@ -842,10 +876,10 @@ It describes how rough the material will be. The rougher the material, the dimme
 
 - Metalness \newline
     It describes how metallic the material will be. It is an important parameter in different rendering systems. Firstly, metals (conductors) are much more reflective than insulators (non-conductors). The high reflectivity prevents most light from reaching the interior and scattering, so metals look shiny in general. The more metallic the material, the shinier the reflection, vice versa.
-    In SceneKit, the meatless property can be set with a color vale. Lower values, which means darker colors, will make the material to less metallic, such as wood. Higher values, which means brighter colors, will cause the surface to appear more metallic, like iron.
+    In SceneKit, the meatless property can be set with a color value. Lower values, which means darker colors, will make the material to less metallic, such as wood. Higher values, which means brighter colors, will cause the surface to appear more metallic, like iron.
     Figure 3.35 shows the streaked metal material of the nuts. The metalness property is white color, so the material is very shiny.
 
-    ![The nuts of the bed cabinet are using streaked metal as the material](https://lh3.googleusercontent.com/Oxy0xRFlCX3LDzmdynZuvtddG5n2DlU6eKJ4EXblb4dZRAWc3Da9AoVUREMvugS-gcj52d9XRF0)
+    ![The nuts of the bed cabinet are using streaked metal as the material](https://lh3.googleusercontent.com/PVvOQB5zDdRGZnraLm49dmb-h4B1CCXE5xo5jwFtsGGp53nZX03EOrKs4WdZ0ufrOEtLwSkKzbU)
 
 - Normal \newline
 It describes the nominal orientation of a surface at each point for use in lighting. In general, we use a texture image as a normal map for the normal property. When SceneKit uses the texture image for the normal property, it treats the R, G, and B components of each pixel of the image as the X, Y, and Z components of a surface normal vector. Because a normal map can store much more detailed surface information than a geometry, we can set a texture image to the normal property to simulate rough surfaces such as stone and wood by adding protrusion in the normal map. Figure 3.36-3.37 show the effects of a normal map.
@@ -856,4 +890,83 @@ It describes the nominal orientation of a surface at each point for use in light
 
 In Xcode SceneKit Editor, we can select a specific node and set the node's material in the material inspector as shown in Figure 3.38. We can select an image for each property, such as diffuse, metalness, roughness, normal, etc.
 
-![The material inspector of the bed cabinet is mainly using the PBR model of bamboo wood](https://lh3.googleusercontent.com/nh21s6GS1TrKGEvH_VR6hIMUXT4xqCzlZXSVnIlzB5wjG1o_MFsz39hZ1AtOyEApvo9_Fz9FE-Y)
+![The material inspector of the bed cabinet is mainly using the PBR model of bamboo wood](https://lh3.googleusercontent.com/FAxWz6gLv_DHxzuMbQrLsk7OWgXHkgsa7YAZSLU9XrWIc8HErN3z3fpZE2X3mfC1XLRIK_GToMc)
+
+#### Changing the Material
+Related class of this function:
+
+- `PlaneViewController` class
+- `DetailViewController`class
+
+To make the application more interactive, I add a function for the users to change the material of the furniture objects by the `UISegmentedControl` class. I name it as `materialCustom`.
+
+```java
+@IBOutlet weak var materialCustom: UISegmentedControl!
+```
+
+In the `DetailViewController`class, first, I will get the data of a specific furniture object by its `id` using Realm. Then, I get its material column and separate it by a comma. Because in the Realm database, I use commas to separate different materials that a furniture object has. After that, I remove all segments, and insert each segment using a loop. The title of each segment is the material name. Figure 3.39-3.41 shows the segments of materials in the detail page.
+
+```java
+// Read some data from the Realm
+realmResults = realm.objects(Furniture.self).filter("id == '\(self.id)'")
+
+let subStrings = realmResults![0].material!.split(separator: ",")
+
+materialCustom.removeAllSegments()
+
+for i in 0..<subStrings.count {
+    materialCustom.insertSegment(withTitle: 
+    String(subStrings[i]).replacingOccurrences
+    (of: "-", with: " ", options: .literal, range: nil).capitalized, 
+    at: i, animated: false)
+}
+```
+
+When the users changes the selected segment, the image of the furniture object will be changed, as shown in Figure 3.39-3.41.
+
+```java
+@IBAction func indexChanged(_ sender: Any) {
+    if let viewImage = view.viewWithTag(100) as? UIImageView {
+        if let image = realmResults![0].name {
+            viewImage.image = UIImage(named: "\(image)-\(materialCustom.titleForSegment
+            (at: materialCustom.selectedSegmentIndex)!.replacingOccurrences
+            (of: " ", with: "-", options: .literal, range: nil).lowercased()).png")
+        }
+    }
+}
+```
+
+The material of the selected segment will be passed to the `PlaneViewController` class using `segue.destination`.
+
+```java
+material = materialCustom.titleForSegment
+(at: materialCustom.selectedSegmentIndex)!.replacingOccurrences
+(of: " ", with: "-", options: .literal, range: nil).lowercased();
+```
+In the `PlaneViewController` class, when the user adds a furniture object into the scene, its diffuse, metalness, roughness and normal contents will be the correspoding images of the material he selected in the segment control.
+
+```java
+let furnitureMaterial = SCNMaterial()
+
+furnitureMaterial.lightingModel = .physicallyBased
+
+furnitureMaterial.diffuse.contents = UIImage
+(named: "art.scnassets/textures/\(material)-albedo.jpg")
+
+furnitureMaterial.metalness.contents = UIImage
+(named: "art.scnassets/textures/\(material)-metalness.jpg")
+
+furnitureMaterial.roughness.contents = UIImage
+(named: "art.scnassets/textures/\(material)-roughness.jpg")
+
+furnitureMaterial.normal.contents = UIImage
+(named: "art.scnassets/textures/\(material)-normal.jpg")
+
+furnitureNode.childNode
+(withName: "main", recursively: true)!.geometry?.firstMaterial = furnitureMaterial
+```
+![Selecting the segment of lace material in the detail page](https://lh3.googleusercontent.com/jwstcOOdaQ3MGh9s7cSBZHd4VR3zBV-LUtYPagzrCFHEJUkUJtxAqr0ypmQB_ZBVfPSPd1aV408)
+
+![Selecting the segment of white fabric material in the detail page](https://lh3.googleusercontent.com/0ckKFDZnC5pFB2XkgLuQECaLZxCuQT0DJnn060VM7c5EbvDcCZx-wwqCa_EKSvQux8IDqlr3PLk)
+
+![Selecting the segment of red fabric material in the detail page](https://lh3.googleusercontent.com/hDn4LpDWqFFVF-gJ02D25_wjeNdeSfvCnUhp9pw-6MCyNDHFIgzJNMf7VyFB6NfgbqLvkIqYOPM)
