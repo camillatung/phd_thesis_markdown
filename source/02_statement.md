@@ -44,7 +44,7 @@ We hereby recommend that the Final Year Project submitted by LEE Cheuk Tung enti
 
 \itab{$\rule{5cm}{0.15mm}$} \tab{$\rule{5cm}{0.15mm}$}
 
-\itab{Dr. CHOY, Martin Man Ting} \tab{Dr. HUANG, Xin}
+\itab{Dr. CHOY, Martin Man Ting} \tab{Dr. ZHANG, Eric Lu}
 
 \itab{Supervisor} \tab{Observer} 
 
